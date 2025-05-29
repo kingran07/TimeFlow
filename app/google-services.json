@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "398209990151",
+    "project_id": "time-flow-c0628",
+    "storage_bucket": "time-flow-c0628.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398209990151:android:c719d3dc4808dbc31274a2",
+        "android_client_info": {
+          "package_name": "danan.ran.schoolapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCfQ0DH6PPLxQ_EocLnN_2DnfWe6ar0qQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
