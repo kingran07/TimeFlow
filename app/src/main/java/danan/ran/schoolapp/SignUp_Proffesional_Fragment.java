@@ -21,13 +21,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
-
 public class SignUp_Proffesional_Fragment extends Fragment {
 
     private EditText editTextFullName, editTextEmail, editTextPassword, editTextPhone;
     private EditText editTextBusinessName, editTextYearsOfExperience;
-    private AutoCompleteTextView autoCompleteBusinessType;
+    private AutoCompleteTextView autoCompleteProfession;
     private Button buttonSignUp;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -48,7 +46,7 @@ public class SignUp_Proffesional_Fragment extends Fragment {
         editTextPhone = view.findViewById(R.id.editText_Phone_Number);
         editTextBusinessName = view.findViewById(R.id.editText_businessName);
         editTextYearsOfExperience = view.findViewById(R.id.editText_experience);
-        autoCompleteBusinessType = view.findViewById(R.id.autoComplete_businessType);
+        autoCompleteProfession = view.findViewById(R.id.autoComplete_profession);
         buttonSignUp = view.findViewById(R.id.button4);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -56,7 +54,7 @@ public class SignUp_Proffesional_Fragment extends Fragment {
                 R.array.business_types,
                 android.R.layout.simple_dropdown_item_1line
         );
-        autoCompleteBusinessType.setAdapter(adapter);
+        autoCompleteProfession.setAdapter(adapter);
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +84,12 @@ public class SignUp_Proffesional_Fragment extends Fragment {
         String password = editTextPassword.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         String businessName = editTextBusinessName.getText().toString().trim();
-        String businessType = autoCompleteBusinessType.getText().toString().trim();
+        String profession = autoCompleteProfession.getText().toString().trim();
         String yearsStr = editTextYearsOfExperience.getText().toString().trim();
 
         if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)
                 || TextUtils.isEmpty(phone) || TextUtils.isEmpty(businessName)
-                || TextUtils.isEmpty(businessType) || TextUtils.isEmpty(yearsStr)) {
+                || TextUtils.isEmpty(profession) || TextUtils.isEmpty(yearsStr)) {
             Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -111,7 +109,7 @@ public class SignUp_Proffesional_Fragment extends Fragment {
                         if (task.isSuccessful()) {
                             String userId = mAuth.getCurrentUser().getUid();
 
-                            User_Proffesional user = new User_Proffesional(fullName, email, phone, businessName, businessType, yearsOfExperience, true);
+                            User_Proffesional user = new User_Proffesional(fullName, email, phone, businessName, profession, yearsOfExperience, true);
 
                             db.collection("users").document(userId)
                                     .set(user)

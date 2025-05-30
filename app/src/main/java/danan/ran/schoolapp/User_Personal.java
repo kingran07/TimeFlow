@@ -6,7 +6,10 @@ public class User_Personal {
     private String phone;
     private boolean professional;
 
-    public User_Personal() {}
+    public User_Personal()
+    {
+
+    }
 
 
     public User_Personal(String fullName, String email, String phone, boolean professional) {

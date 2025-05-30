@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,7 +76,11 @@ public class SignIn_Fragment extends Fragment {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                            // TODO: Navigate to home screen fragment
+
+                            Intent intent = new Intent(getActivity(), Home_Page.class);
+                            intent.putExtra("userId", user.getUid());
+                            startActivity(intent);
+                            requireActivity().finish();
                         } else {
                             Toast.makeText(getContext(), "Login failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

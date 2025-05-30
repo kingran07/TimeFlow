@@ -3,96 +3,74 @@ package danan.ran.schoolapp;
 public class User_Proffesional {
     private String fullName;
     private String email;
-    private String password;
     private String phone;
-    private String buisnessName;
-    private String buisnessType;
-    private String yearStr;
+    private String businessName;
+    private String profession;
+    private int yearsOfExperience;
     private boolean professional;
 
+    public User_Proffesional() {}
 
-
-    public User_Proffesional(String fullName, String email, String phone, String businessName, String businessType, int yearsOfExperience, boolean professional) {
-    }
-
-
-
-    public User_Proffesional(String fullName, String email, String password, String phone, String buisnessName, String buisnessType, String yearStr, boolean professional)
-    {
+    public User_Proffesional(String fullName, String email, String phone, String buisnessName, String profession, int yearsOfExperience, boolean professional) {
         this.fullName = fullName;
         this.email = email;
-        this.password = password;
         this.phone = phone;
-        this.buisnessName = buisnessName;
-        this.buisnessType = buisnessType;
-        this.yearStr = yearStr;
+        this.businessName = buisnessName;
+        this.profession = profession;
+        this.yearsOfExperience = yearsOfExperience;
         this.professional = professional;
     }
 
-
-
-
     public String getFullName() {
         return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public String getBuisnessName() {
-        return buisnessName;
-    }
-
-    public String getBuisnessType() {
-        return buisnessType;
-    }
-
-    public String getYearStr() {
-        return yearStr;
-    }
-
-    public boolean isProfessional() {
-        return professional;
-    }
-
-
-
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public String getBuisnessName() {
+        return businessName;
+    }
+
     public void setBuisnessName(String buisnessName) {
-        this.buisnessName = buisnessName;
+        this.businessName = buisnessName;
     }
 
-    public void setBuisnessType(String buisnessType) {
-        this.buisnessType = buisnessType;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setYearStr(String yearStr) {
-        this.yearStr = yearStr;
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public boolean isProfessional() {
+        return professional;
     }
 
     public void setProfessional(boolean professional) {

@@ -10,7 +10,7 @@
     android:fadeScrollbars="false"
     android:scrollbarThumbVertical="@drawable/scrollbar_thumb_gray"
     android:scrollbarSize="6dp"
-    tools:context=".Sign_Up_Proffesional">
+    tools:context=".SignUp_Proffesional_Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -180,7 +180,7 @@
 
         <!-- Business Type -->
         <TextView
-            android:id="@+id/textView_businessType"
+            android:id="@+id/textView_profession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Business Type"
@@ -190,19 +190,19 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_businessType"
+            android:id="@+id/textInputLayout_profession"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:hint="Select or type your profession"
-            app:layout_constraintTop_toBottomOf="@id/textView_businessType"
+            app:layout_constraintTop_toBottomOf="@id/textView_profession"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <AutoCompleteTextView
-                android:id="@+id/autoComplete_businessType"
+                android:id="@+id/autoComplete_profession"
                 android:minHeight="48dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
             android:text="Years of Experience"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayout_businessType"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout_profession"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
