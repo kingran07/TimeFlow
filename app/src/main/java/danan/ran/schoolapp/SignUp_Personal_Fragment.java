@@ -100,7 +100,7 @@ public class SignUp_Personal_Fragment extends Fragment {
                             }
                             String uid = firebaseUser.getUid();
 
-                            UserPersonal user = new UserPersonal(fullName, email, phone);
+                            User_Personal user = new User_Personal(fullName, email, phone, false);
 
                             usersCollection.document(uid).set(user)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -109,7 +109,7 @@ public class SignUp_Personal_Fragment extends Fragment {
                                             Toast.makeText(getContext(), "Registration successful!", Toast.LENGTH_SHORT).show();
                                             requireActivity().getSupportFragmentManager()
                                                     .beginTransaction()
-                                                    .replace(R.id.Login_SignUp_Fragment_Container, new SignIn_Fragment()) // Make sure this is the correct container ID
+                                                    .replace(R.id.Login_SignUp_Fragment_Container, new SignIn_Fragment())
                                                     .addToBackStack(null)
                                                     .commit();
                                         }
@@ -126,20 +126,4 @@ public class SignUp_Personal_Fragment extends Fragment {
                     }
                 });
     }
-
-    public static class UserPersonal {
-        public String fullName;
-        public String email;
-        public String phone;
-
-        public UserPersonal() {}
-
-        public UserPersonal(String fullName, String email, String phone) {
-            this.fullName = fullName;
-            this.email = email;
-            this.phone = phone;
-        }
-    }
-
-
 }

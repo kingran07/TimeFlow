@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,8 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class SignUp_Proffesional_Fragment extends Fragment {
 
@@ -34,20 +32,16 @@ public class SignUp_Proffesional_Fragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
-    public SignUp_Proffesional_Fragment() {
-        // Required empty public constructor
-    }
+    public SignUp_Proffesional_Fragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_up_proffesional, container, false);
 
-        // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Initialize Views
         editTextFullName = view.findViewById(R.id.editText_name);
         editTextEmail = view.findViewById(R.id.editTextTextEmailAddress2);
         editTextPassword = view.findViewById(R.id.editTextTextPassword2);
@@ -57,7 +51,6 @@ public class SignUp_Proffesional_Fragment extends Fragment {
         autoCompleteBusinessType = view.findViewById(R.id.autoComplete_businessType);
         buttonSignUp = view.findViewById(R.id.button4);
 
-        // Set up AutoCompleteTextView
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.business_types,
@@ -65,7 +58,6 @@ public class SignUp_Proffesional_Fragment extends Fragment {
         );
         autoCompleteBusinessType.setAdapter(adapter);
 
-        // Set up button click (no lambda)
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +66,6 @@ public class SignUp_Proffesional_Fragment extends Fragment {
         });
 
         TextView alreadyHaveAccountButton = view.findViewById(R.id.textView_alreadyHaveAccount);
-
         alreadyHaveAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,22 +104,14 @@ public class SignUp_Proffesional_Fragment extends Fragment {
             return;
         }
 
-        // Register with Firebase Auth
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Save to Firestore
                             String userId = mAuth.getCurrentUser().getUid();
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("fullName", fullName);
-                            user.put("email", email);
-                            user.put("phone", phone);
-                            user.put("businessName", businessName);
-                            user.put("businessType", businessType);
-                            user.put("yearsOfExperience", yearsOfExperience);
-                            user.put("accountType", "professional");
+
+                            User_Proffesional user = new User_Proffesional(fullName, email, phone, businessName, businessType, yearsOfExperience, true);
 
                             db.collection("users").document(userId)
                                     .set(user)
@@ -139,7 +122,7 @@ public class SignUp_Proffesional_Fragment extends Fragment {
                                                 Toast.makeText(getContext(), "Sign up successful!", Toast.LENGTH_SHORT).show();
                                                 requireActivity().getSupportFragmentManager()
                                                         .beginTransaction()
-                                                        .replace(R.id.Login_SignUp_Fragment_Container, new SignIn_Fragment()) // Make sure this is the correct container ID
+                                                        .replace(R.id.Login_SignUp_Fragment_Container, new SignIn_Fragment())
                                                         .addToBackStack(null)
                                                         .commit();
                                             } else {

@@ -19,36 +19,44 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/personne_icon" />
+        app:srcCompat="@drawable/personne_icon"
+        android:contentDescription="profile image button "/>
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:minHeight="48dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:ems="10"
+        android:layout_marginEnd="16dp"
+        android:hint="Search"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/button" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/editTextText"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        android:text="Search"
+        app:layout_constraintStart_toEndOf="@id/editTextText"
+        app:layout_constraintTop_toBottomOf="@id/imageButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="483dp"
+        android:id="@+id/recyclerViewProfessionals"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@id/editTextText"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/professional_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
