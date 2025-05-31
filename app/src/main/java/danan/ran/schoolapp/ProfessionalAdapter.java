@@ -1,30 +1,17 @@
 package danan.ran.schoolapp;
 
-import android.os.Bundle;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
-import android.content.Context;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapter.ViewHolder> {
 
@@ -42,10 +29,10 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.textViewName);
-            textViewProfession = itemView.findViewById(R.id.textViewProfession);
-            textViewLocation = itemView.findViewById(R.id.textViewLocation);
-            buttonBook = itemView.findViewById(R.id.buttonBook);
+            textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            textViewProfession = (TextView) itemView.findViewById(R.id.textViewProfession);
+            textViewLocation = (TextView) itemView.findViewById(R.id.textViewLocation);
+            buttonBook = (Button) itemView.findViewById(R.id.buttonBook);
         }
     }
 
@@ -58,11 +45,11 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ProfessionalAdapter.ViewHolder holder, int position) {
-        User_Proffesional user = professionalList.get(position);
+        final User_Proffesional user = professionalList.get(position);
 
         holder.textViewName.setText(user.getFullName());
         holder.textViewProfession.setText(user.getProfession());
-        //holder.textViewLocation.setText("📍 " + user.getLocation());
+        // holder.textViewLocation.setText("📍 " + user.getLocation());
 
         holder.buttonBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +57,6 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
                 Toast.makeText(context, "Booking " + user.getFullName(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
@@ -78,4 +64,3 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
         return professionalList.size();
     }
 }
-
