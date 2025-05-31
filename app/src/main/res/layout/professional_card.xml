@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book"
-            android:backgroundTint="@color/black"
+            android:background="@drawable/button_background"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

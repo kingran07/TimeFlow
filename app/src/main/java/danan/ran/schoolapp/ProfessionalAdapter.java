@@ -59,6 +59,12 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
         });
     }
 
+    public void updateList(List<User_Proffesional> newList) {
+        professionalList = newList;
+        notifyDataSetChanged();
+    }
+
+
     @Override
     public int getItemCount() {
         return professionalList.size();
