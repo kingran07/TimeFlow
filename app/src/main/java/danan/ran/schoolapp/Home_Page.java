@@ -2,6 +2,7 @@ package danan.ran.schoolapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,6 +50,7 @@ public class Home_Page extends AppCompatActivity {
     List<User_Proffesional> professionalList = new ArrayList<>();
     List<User_Proffesional> filteredList = new ArrayList<>();
 
+
     Button filterButton;
     EditText searchEditText;
     TextView textViewGreeting, textViewDateTime;
@@ -62,6 +64,7 @@ public class Home_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         androidx.activity.EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
+        String uid = getIntent().getStringExtra("userId");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,6 +94,11 @@ public class Home_Page extends AppCompatActivity {
                     Toast.makeText(Home_Page.this, "My Appointments clicked", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.nav_profile) {
                     Toast.makeText(Home_Page.this, "Profile clicked", Toast.LENGTH_SHORT).show();
+                    String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    Intent intent = new Intent(Home_Page.this, ProfileActivity.class);
+                    intent.putExtra("userId", uid);
+                    startActivity(intent);
+
                 } else if (id == R.id.nav_notifications) {
                     Toast.makeText(Home_Page.this, "Notifications clicked", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.nav_logout) {
@@ -137,7 +145,6 @@ public class Home_Page extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.drawer_menu, menu);
         return true;
     }
 
